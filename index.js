@@ -15,7 +15,7 @@ const defaultOptions = {
 module.exports = {
   connect,
   browse(table, fields, filter, options = {}) {
-    const dbApi = options.dbApi || defaultOptions.dbApi;
+    const dbApi = options.dbApi || defaultOptions.dbApi || knex;
     const limit = options.limit || defaultOptions.limit;
     const offset = options.offset || defaultOptions.offset;
     const dateField = options.dateField || defaultOptions.dateField;
@@ -73,5 +73,10 @@ module.exports = {
     return dbApi(table)
       .where(filter)
       .del();
+  },
+  raw(sql, options = {}) {
+    const dbApi = options.dbApi || knex;
+    return dbApi.raw(sql, options)
+      .then(res => res.rows);
   }
 };
