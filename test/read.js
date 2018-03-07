@@ -5,7 +5,7 @@ const bread = require('../index');
 
 bread.connect(knexfile.development);
 
-describe.only('read', function() {
+describe('read', function() {
   const fields = [
     'username',
     'first_name',

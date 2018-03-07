@@ -5,7 +5,7 @@ const bread = require('../index');
 
 bread.connect(knexfile.development);
 
-describe.only('add', function() {
+describe('add', function() {
   const fields = [
     'username',
     'first_name',
@@ -16,7 +16,7 @@ describe.only('add', function() {
     username: 'test',
     first_name: 'todd',
     last_name: 'bobb',
-  }
+  };
 
   before(function() {
     return knex.schema.dropTableIfExists('users')
@@ -26,20 +26,18 @@ describe.only('add', function() {
           tbl.string('first_name');
           tbl.string('last_name');
         })
-          .then((res) => {
-            return knex('users')
-              .insert(data)
-          })
       })
   });
 
   it('should be a function', function(done) {
     expect(bread.read).to.be.a('function');
     done();
-  })
+  });
 
-  it('should browse with param', async () => {
-    const value = await bread.read('users', fields, { username: 'test' }, {})
-    expect(value.username).to.equal(data.username);
-  })
-})
+
+  it('should add a user', async () => {
+    await bread.add('users', fields, data);
+    const value = await knex('users').where({ username: 'test' })
+    expect(value[0].username).to.equal(data.username);
+  });
+});
