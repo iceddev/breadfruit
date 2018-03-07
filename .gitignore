@@ -6,3 +6,4 @@ node_modules
 # Other
 .DS_Store
 coverage
+test.sqlite3
