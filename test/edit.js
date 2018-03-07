@@ -33,8 +33,6 @@ describe('edit', function() {
       })
   });
 
-  after(async () => await knex.schema.dropTableIfExists('users'))
-
   it('should be a function', function(done) {
     expect(bread.edit).to.be.a('function');
     done();
