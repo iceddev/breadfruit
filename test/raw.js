@@ -26,10 +26,7 @@ describe('raw', function() {
           tbl.string('first_name');
           tbl.string('last_name');
         })
-          .then((res) => {
-            return knex('users')
-              .insert(data)
-          })
+          .then(() => knex('users').insert(data))
       })
   });
 
@@ -41,6 +38,6 @@ describe('raw', function() {
   it('should use a raw search query', async () => {
     const test = await knex.raw('select * from users');
     const value = await bread.raw(`select * from users;`)
-    expect(value.username).to.equal(data.username);
+    expect(value[0].username).to.equal(data.username);
   })
 })
