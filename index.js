@@ -77,6 +77,6 @@ module.exports = {
   raw(sql, options = {}) {
     const dbApi = options.dbApi || knex;
     return dbApi.raw(sql, options)
-      .then(res => res.rows);
+      .then(res => res.rows ? res.rows : res);
   }
 };
