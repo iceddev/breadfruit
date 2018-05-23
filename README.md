@@ -4,6 +4,8 @@
 
 Not really bread. Not really fruit. Just like this package.  Some simple helpers on top of knex.
 
+![breadfruit](happy_breadfruit.png)
+
 ## create an instance of breadfruit
 
 ```javascript
