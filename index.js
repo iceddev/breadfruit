@@ -30,8 +30,16 @@ function connect(settings) {
       }
 
       if (options.orderBy) {
-        query = query
-          .orderBy(options.orderBy, sortOrder);
+        if(Array.isArray(options.orderBy)) {
+          options.orderBy.forEach((orderBy, index) => {
+            if(Array.isArray(sortOrder)) {
+              return query = query.orderBy(orderBy, sortOrder[index]);
+            }
+            query = query.orderBy(orderBy, sortOrder);
+          });
+        } else {
+          query = query.orderBy(options.orderBy, sortOrder);
+        }
       }
 
       return query;

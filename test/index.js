@@ -28,6 +28,30 @@ describe('breadfruit', function(){
       });
   });
 
+  it('should fail to browse without a real connection', function(done) {
+    const api = breadfruit({client: 'pg'});
+    api.browse('tableName', [], {}, {orderBy: 'someColumn'})
+      .catch((error) => {
+        done();
+      });
+  });
+
+  it('should fail to browse without a real connection', function(done) {
+    const api = breadfruit({client: 'pg'});
+    api.browse('tableName', [], {}, {orderBy: ['someColumn', 'otherColumn']})
+      .catch((error) => {
+        done();
+      });
+  });
+
+  it('should fail to browse without a real connection', function(done) {
+    const api = breadfruit({client: 'pg'});
+    api.browse('tableName', [], {}, {orderBy: ['someColumn', 'otherColumn'], sortOrder: ['asc', 'desc']})
+      .catch((error) => {
+        done();
+      });
+  });
+
   it('should fail to read without a real connection', function(done) {
     const api = breadfruit({client: 'pg'});
     api.read('tableName', [], {})
