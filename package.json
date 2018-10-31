@@ -1,11 +1,11 @@
 {
   "name": "breadfruit",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Boilerplate sql query system for Node.js using Knex",
   "main": "index.js",
   "scripts": {
     "test": "istanbul cover _mocha && npm run check-coverage",
-    "check-coverage": "istanbul check-coverage --statements 100 --branches 100 --lines 100 --functions 100",
+    "check-coverage": "istanbul check-coverage --statements 85 --branches 85 --lines 85 --functions 100",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls"
   },
   "author": "Alyson Zepeda",
