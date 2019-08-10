@@ -1,6 +1,6 @@
 {
   "name": "breadfruit",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "Boilerplate sql query system for Node.js using Knex",
   "main": "index.js",
   "scripts": {
