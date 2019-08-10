@@ -81,7 +81,7 @@ function connect(settings) {
     raw(sql, options = {}) {
       const dbApi = options.dbApi || knex;
       return dbApi.raw(sql, options)
-        .then(res => res && res.rows ? res.rows : res);
+        .then(res => res.rows || res);
     }
   };
 }
