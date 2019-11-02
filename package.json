@@ -19,7 +19,7 @@
     "url": "git+ssh://git@github.com/iceddev/breadfruit.git"
   },
   "dependencies": {
-    "knex": "^0.14.4"
+    "knex": "^0.20.1"
   },
   "devDependencies": {
     "chai": "^3.5.0",
