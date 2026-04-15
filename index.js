@@ -168,9 +168,26 @@ export default function connect(settings) {
     return row;
   }
 
-  async function raw(sql, options = {}) {
-    const dbApi = options.dbApi || knex;
-    const res = await dbApi.raw(sql, options);
+  async function raw(sql, bindingsOrOptions = {}, options = {}) {
+    // Support two call shapes:
+    //   raw(sql)                          — no bindings
+    //   raw(sql, bindings)                — array or object bindings (Knex style)
+    //   raw(sql, bindings, options)       — bindings + options.dbApi
+    //   raw(sql, { bindings, dbApi })     — options object with bindings key
+    let bindings;
+    let opts;
+    if (Array.isArray(bindingsOrOptions)) {
+      bindings = bindingsOrOptions;
+      opts = options;
+    } else if (bindingsOrOptions && typeof bindingsOrOptions === 'object' && 'bindings' in bindingsOrOptions) {
+      bindings = bindingsOrOptions.bindings;
+      opts = bindingsOrOptions;
+    } else {
+      bindings = undefined;
+      opts = bindingsOrOptions;
+    }
+    const dbApi = opts.dbApi || knex;
+    const res = bindings !== undefined ? await dbApi.raw(sql, bindings) : await dbApi.raw(sql);
     return res.rows || res;
   }
 
