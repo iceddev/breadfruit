@@ -15,7 +15,7 @@
     "README.md"
   ],
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
   },
   "scripts": {
     "lint": "eslint .",
@@ -49,8 +49,7 @@
     "@eslint/js": "^10.0.1",
     "c8": "^11.0.0",
     "eslint": "^10.2.0",
-    "globals": "^17.5.0",
-    "pg": "^8.20.0"
+    "globals": "^17.5.0"
   },
   "publishConfig": {
     "access": "public"
