@@ -1,6 +1,6 @@
 {
   "name": "breadfruit",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Boilerplate SQL query helpers for Node.js using Knex",
   "type": "module",
   "main": "./index.js",
